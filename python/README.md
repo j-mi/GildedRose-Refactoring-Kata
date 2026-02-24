@@ -2,7 +2,14 @@
 
 For exercise instructions see [top level README](../README.md)
 
-Suggestion: create a python virtual environment for this project. See the [documentation](https://docs.python.org/3/library/venv.html)
+## How to get started
+
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+``` 
 
 ## Run the unit tests from the Command-Line
 
