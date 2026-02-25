@@ -78,5 +78,39 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-1, item.sell_in)
         self.assertEqual(4, item.quality)
 
+    def test_normal_item_over_multiple_days(self):
+        item = self.update("foo", sell_in=1, quality=10, days=2)
+        self.assertEqual(-1, item.sell_in)
+        self.assertEqual(7, item.quality)
+
+    def test_updates_multiple_items_over_multiple_days(self):
+        days = 3
+        items = [
+            Item("foo", 10, 20),
+            Item("Aged Brie", 2, 0),
+            Item("Sulfuras, Hand of Ragnaros", 0, 80),
+            Item("Backstage passes to a TAFKAL80ETC concert", 11, 15),
+            Item("Conjured Magic Hat", 2, 4),
+        ]
+        gr = GildedRose(items)
+
+        for _ in range(days):
+            gr.update_quality()
+
+        # foo
+        self.assertEqual((7, 17), (items[0].sell_in, items[0].quality))
+
+        # Aged Brie
+        self.assertEqual((-1, 4), (items[1].sell_in, items[1].quality))
+
+        # Sulfuras
+        self.assertEqual((0, 80), (items[2].sell_in, items[2].quality))
+
+        # Backstage
+        self.assertEqual((8, 20), (items[3].sell_in, items[3].quality))
+
+        # Conjured
+        self.assertEqual((-1, 0), (items[4].sell_in, items[4].quality))
+
 if __name__ == "__main__":
     unittest.main()
