@@ -2,6 +2,31 @@
 
 For exercise instructions see [top level README](../README.md)
 
+
+## Gilded Rose Refactoring Kata – Python Implementation
+
+This branch contains my short solution to the Gilded Rose Refactoring Kata implemented in Python.
+
+## Overview
+
+The task was approached as a legacy code refactoring exercise.
+The goal was to safely introduce a new item ("Conjured Magic Hat") while improving readability and maintainability of the original implementation.
+
+## Solution and the steps
+
+1. Fixed the first failing test (intented).
+2. Added unit tests to capture and verify expected behavior.
+3. Implemented the new requirement for "Conjured Magic Hat" to the legacy code base.
+4. Added the unit tests to support the new item.
+4. Refactored the structure to:
+   - Reduce nested conditionals
+   - Fix the rules and logic to be more clearer (functions)
+   - Support to add more items with new rules a bit easier
+   - Still to work as expected even if refactored
+   - Be more readable
+5. Checked that previous unit tests still are OK
+6. Added more unit tests to test the logic a bit better
+
 ## How to get started
 
 ```
@@ -16,6 +41,12 @@ pip install -r requirements.txt
 ```
 python -m unittest
 ```
+
+## About Approval / TextTest Regression Tests
+
+The original kata repository includes TextTest-based approval (Golden Master) regression tests.
+
+I did not do regression tests in my solution, only unit tests were used. However, below you can find how to proceed with the regression tests.
 
 ## Run the TextTest fixture from the Command-Line
 
